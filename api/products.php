@@ -27,7 +27,7 @@ function getProductsList(){
 	$products = selectQuery($query);
     for($i = 0; $i < count($products); $i++){
         if(!file_exists("../" . $products[$i]["image"]) || $products[$i]["image"] == ""){
-            $products[$i]["image"] = "assets/placeholder.gif";
+            $products[$i]["image"] = "https://osss-tb.herokuapp.com/assets/placeholder.gif";
         }
     }
     return $products;
