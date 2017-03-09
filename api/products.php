@@ -32,7 +32,11 @@ function getProductsList(){
     for($i = 0; $i < count($products); $i++){
         if(!is_url_exist($products[$i]["image"]) || $products[$i]["image"] == ""){
             $products[$i]["image"] = "https://osss-tb.herokuapp.com/assets/placeholder.gif";
-        }
+        }else{
+			$milliseconds = round(microtime(true) * 1000);
+			$image = $products[$i]["image"];
+			$products[$i]["image"] .= "?$milliseconds";
+		}
     }
     return $products;
 }
