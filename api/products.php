@@ -2,9 +2,9 @@
 include('db.php');
 include('global.php');
 
-require __DIR__ . '../Cloudinary.php';
-require __DIR__ . '../Uploader.php';
-require __DIR__ . '../Api.php';
+require __DIR__ . '../Cloudinary_src/Cloudinary.php';
+require __DIR__ . '../Cloudinary_src/Uploader.php';
+require __DIR__ . '../Cloudinary_src/Api.php';
 
 $json = jsonResponse(0, "No request");
 
