@@ -1,10 +1,10 @@
 <?php
 include('db.php');
 include('global.php');
-
-require __DIR__ . '\\..\\Cloudinary_src\\Cloudinary.php';
-require __DIR__ . '\\..\\Cloudinary_src\\Uploader.php';
-require __DIR__ . '\\..\\Cloudinary_src\\Api.php';
+echo 'test';
+require __DIR__ . '/../Cloudinary_src/Cloudinary.php';
+require __DIR__ . '/../Cloudinary_src/Uploader.php';
+require __DIR__ . '/../Cloudinary_src/Api.php';
 
 $json = jsonResponse(0, "No request");
 
@@ -21,7 +21,7 @@ if(isset($_REQUEST["action"])){
 $conn->close();
 
 /* Output header */
-header('Content-type: application/json');
+// header('Content-type: application/json');
 echo json_encode($json);
 
 /* methods */
