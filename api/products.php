@@ -21,7 +21,7 @@ if(isset($_REQUEST["action"])){
 $conn->close();
 
 /* Output header */
-header('Content-type: application/json');
+// header('Content-type: application/json');
 echo json_encode($json);
 
 /* methods */
