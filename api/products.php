@@ -26,8 +26,8 @@ function getProductsList(){
 	$query = "SELECT * FROM tbl_products WHERE inventory > 0";
 	$products = selectQuery($query);
     for($i = 0; $i < count($products); $i++){
-        if(!file_exists("../" . $products[$i]["image"]) || $products[$i]["image"] == ""){
-            $products[$i]["image"] = "assets/placeholder.gif";
+        if(!is_url_exist($products[$i]["image"]) || $products[$i]["image"] == ""){
+            $products[$i]["image"] = "https://osss-tb.herokuapp.com/assets/placeholder.gif";
         }
     }
     return $products;
@@ -61,5 +61,20 @@ function addProduct($product){
     }else{
         return jsonResponse(0,  "Failed to add product");
     }
+}
+
+function is_url_exist($url){
+	$ch = curl_init($url);    
+	curl_setopt($ch, CURLOPT_NOBODY, true);
+	curl_exec($ch);
+	$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+	if($code == 200){
+		$status = true;
+	}else{
+		$status = false;
+	}
+	curl_close($ch);
+	return $status;
 }
 ?>
