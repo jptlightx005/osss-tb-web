@@ -1,7 +1,7 @@
 <?php
 include('db.php');
 include('global.php');
-echo 'test';
+echo __DIR__ . '/../Cloudinary_src/Cloudinary.php';
 require __DIR__ . '/../Cloudinary_src/Cloudinary.php';
 require __DIR__ . '/../Cloudinary_src/Uploader.php';
 require __DIR__ . '/../Cloudinary_src/Api.php';
@@ -21,7 +21,7 @@ if(isset($_REQUEST["action"])){
 $conn->close();
 
 /* Output header */
-// header('Content-type: application/json');
+header('Content-type: application/json');
 echo json_encode($json);
 
 /* methods */
