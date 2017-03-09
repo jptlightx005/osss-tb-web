@@ -1,7 +1,7 @@
 <?php
 include('db.php');
 include('global.php');
-echo __DIR__ . '/../Cloudinary_src/Cloudinary.php';
+
 require __DIR__ . '/../Cloudinary_src/Cloudinary.php';
 require __DIR__ . '/../Cloudinary_src/Uploader.php';
 require __DIR__ . '/../Cloudinary_src/Api.php';
@@ -21,7 +21,7 @@ if(isset($_REQUEST["action"])){
 $conn->close();
 
 /* Output header */
-// header('Content-type: application/json');
+header('Content-type: application/json');
 echo json_encode($json);
 
 /* methods */
@@ -51,9 +51,10 @@ function addProduct($product){
         if($files["product_picture"]["error"] != UPLOAD_ERR_NO_FILE){
 
             $subfile_name = replace_accents(friendly_url($product["product_name"]));
-            $file_name = "$product_id-$subfile_name.jpg";
-            saveFile($files["product_picture"], $file_name);
-            $file_name = "images/$file_name";
+            $file_name = "$product_id-$subfile_name";
+			
+			$result = \Cloudinary\Uploader::upload($files["product_picture"]["tmp_name"],	array("public_id" => "$file_name"));
+            $file_name = $result["url"];
         }
         $query = "UPDATE tbl_products SET image = '$file_name' WHERE ID = $product_id";
         $stmt = $conn->prepare($query);
