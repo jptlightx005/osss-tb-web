@@ -15,6 +15,11 @@ if(isset($_POST["action"])){
 	    'subject' => 'Hello',
 	    'text'    => 'Testing some Mailgun awesomness!'
 	));
+	
+	echo "testing:<br>";
+	if($result){
+		print_r($result);
+	}
 }
 ?>
 
