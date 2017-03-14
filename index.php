@@ -3,7 +3,7 @@ require __DIR__ . "/vendor/autoload.php";
 use Mailgun\Mailgun;
 
 if(isset($_POST["action"])){
-
+	echo "testing: {$_POST["action"]}<br>";
 	# Instantiate the client.
 	$mgClient = new Mailgun(getenv("MAILGUN_API_KEY"));
 	$domain = getenv("MAILGUN_DOMAIN");
