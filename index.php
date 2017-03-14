@@ -21,11 +21,7 @@ function send_mail($email,$subject,$msg) {
 
 if(isset($_POST["action"])){
 	echo "testing: {$_POST["action"]}<br>";
-	# Instantiate the client.
-	$mgClient = new Mailgun();
-	
 
-	# Make the call to the client.
 	$result = send_mail($_POST["email"], 'Hello', 'Testing some Mailgun awesomness!');
 	
 	echo "testing:<br>";
