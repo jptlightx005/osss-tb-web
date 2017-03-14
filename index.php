@@ -2,8 +2,6 @@
 require __DIR__ . "/vendor/autoload.php";
 use Mailgun\Mailgun;
 
-echo "Try print: " . __DIR__ . "/vendor/autoload.php";
-
 if(isset($_POST["action"])){
 
 	# Instantiate the client.
@@ -12,7 +10,7 @@ if(isset($_POST["action"])){
 
 	# Make the call to the client.
 	$result = $mgClient->sendMessage($domain, array(
-	    'from'    => 'osss-tb@mailgun.com',
+	    'from'    => getenv("MAILGUN_SMTP_LOGIN"),
 	    'to'      => $_POST["email"],
 	    'subject' => 'Hello',
 	    'text'    => 'Testing some Mailgun awesomness!'
