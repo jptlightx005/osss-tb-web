@@ -9,7 +9,7 @@ function send_mail($email,$subject,$msg) {
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 	curl_setopt($ch, CURLOPT_URL, 'https://api.mailgun.net/v2/'.$domain.'/messages');
 	curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-	'from' => "no-reply <no-reply@$domain.com>",
+	'from' => "no-reply <no-reply@osss-tb.herokuapp.com>",
 	'to' => $email,
 	'subject' => $subject,
 	'html' => $msg
@@ -20,11 +20,8 @@ function send_mail($email,$subject,$msg) {
 }
 
 if(isset($_POST["action"])){
-	echo "testing: {$_POST["action"]}<br>";
-
-	$result = send_mail($_POST["email"], 'Hello', 'Testing some Mailgun awesomness!');
-	
-	echo "testing:<br>";
+	$email=$_POST["email"];
+	$result = send_mail($_POST["email"], 'Account activation', "Click the link to activate account https://osss-tb.herokuapp.com/activate.php?id=$email");
 	if($result){
 		print_r($result);
 	}
