@@ -23,7 +23,7 @@ if(isset($_POST["action"])){
 	$email=$_POST["email"];
 	$result = send_mail($_POST["email"], 'Account activation', "Click the link to activate account https://osss-tb.herokuapp.com/activate.php?id=$email");
 	if($result){
-		print_r($result);
+		echo "Sent email to <u>$email</u>";
 	}
 }
 ?>
