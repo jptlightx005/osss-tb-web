@@ -11,7 +11,8 @@ if(isset($_REQUEST['action'])){
 }
 
 $url = urlToApi('/api/products.php?action=get_products');
-$obj = jsonFromRequest(null, $url);
+$params = array("api_key" => getenv("API_KEY"));
+$obj = jsonFromRequest($params, $url);
 
 $product_list = $obj["message"];
 ?>

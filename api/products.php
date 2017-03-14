@@ -4,16 +4,21 @@ include('global.php');
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$json = jsonResponse(0, "No request");
+$json = jsonResponse(0, "Invalid request");
 
-if(isset($_REQUEST["action"])){
+if(isset($_REQUEST["action"]) && isset($_REQUEST["api_key"])){
 	$action = $_REQUEST["action"];
-	$json = jsonResponse(0, "Invalid request: $action");
-	if($action == "get_products"){
-		$json = jsonResponse(1, getProductsList());
-	}else if($action == "add_product"){
-        $json = addProduct($_REQUEST);
-    }
+	
+	$api_key = getenv("API_KEY");
+	$json = jsonResponse(0, "Authentication Failed");
+	if($api_key == $_REQUEST["api_key"]){
+		$json = jsonResponse(0, "Invalid request: $action");
+		if($action == "get_products"){
+			$json = jsonResponse(1, getProductsList());
+		}else if($action == "add_product"){
+			$json = addProduct($_REQUEST);
+		}
+	}
 }
 
 $conn->close();
