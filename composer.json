@@ -1,11 +1,7 @@
 {
 	"require": {
 		"cloudinary/cloudinary_php": "dev-master",
-		"php-http/httplug": "^1.0",
-        "php-http/multipart-stream-builder": "^0.1 || ^0.2",
-        "php-http/message": "^1.0",
-        "php-http/client-common": "^1.1",
-        "php-http/discovery": "^1.0",
-        "webmozart/assert": "^1.2"
+		"mailgun/mailgun-php": "~2.0",
+        "php-http/guzzle6-adapter": "^1.1.1"
 	}
 }
